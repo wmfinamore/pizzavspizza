@@ -14,3 +14,6 @@ class Pizzeria(models.Model):
     logo_image = models.ImageField(upload_to='pizzariaImages', blank=True, default="pizzariaImages/pizzalogo.png")
     email = models.EmailField(max_length=245, blank=True)
     active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return "{},{}".format(self.pizzeria_name, self.city)
