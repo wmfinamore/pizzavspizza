@@ -40,6 +40,9 @@ INSTALLED_APPS = [
 
     #3td party
     'rest_framework',
+
+    #loacal
+    'stores',
 ]
 
 MIDDLEWARE = [
