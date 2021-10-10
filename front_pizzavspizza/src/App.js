@@ -1,5 +1,6 @@
 import logo from './pizza.jpg';
 import './App.css';
+import PizzaList from "./pizzerias/pizzeriaslist.js"
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <h1>
           Pizza vs Pizza
         </h1>
+        <PizzaList/>
       </header>
     </div>
   );
