@@ -9,12 +9,7 @@ function App() {
         <p>
           Web App for Pizza Lovers
         </p>
-        <h1
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <h1>
           Pizza vs Pizza
         </h1>
       </header>
