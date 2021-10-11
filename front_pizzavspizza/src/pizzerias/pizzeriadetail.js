@@ -2,6 +2,7 @@ import React, {Component} from "react";
 
 class PizzaDetail extends Component{
     render(){
+    const p = this.props.p
         return(
             <div>
                 <h4>{p.id}</h4>
