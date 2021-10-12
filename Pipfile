@@ -9,6 +9,7 @@ verify_ssl = true
 django = "==3.2"
 djangorestframework = "*"
 pillow = "*"
+django-cors-headers = "*"
 
 [requires]
 python_version = "3.9"

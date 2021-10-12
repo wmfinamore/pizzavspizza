@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     #3td party
+    'corsheaders',
     'rest_framework',
 
     #loacal
