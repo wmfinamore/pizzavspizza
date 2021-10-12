@@ -3,8 +3,15 @@ import axios from "axios";
 
 class PizzaList extends Component{
 
-    state = {
-        pizzeriasData: [],
+    constructor(props){
+        super(props);
+        this.state = {
+            pizzeriaDetail: [],
+            pizzeria: "",
+            showComponent: false,
+        };
+        this.getPizzaDetail=this.getPizzaDetail.bind(this);
+        this.showPizzeriaDetails=this.showPizzeriaDetails.bind(this);
     }
 
     componentDidMount(){
@@ -27,7 +34,7 @@ class PizzaList extends Component{
             });
     }
 
-    showPizzeriaDetail(item){
+    showPizzeriaDetails(item){
         this.getPizzaDetail(item);
         this.setState({showComponent: true})
     }
