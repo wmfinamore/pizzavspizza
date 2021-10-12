@@ -13,6 +13,7 @@ class PizzeriaListSerializer(serializers.ModelSerializer):
             'pizzeria_name',
             'city',
             'zip_code',
+            'absolute_url',
         ]
 
     def get_absolute_url(self, obj):
