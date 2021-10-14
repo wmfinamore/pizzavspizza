@@ -34,16 +34,16 @@ class PizzaForm extends React.Component{
     render(){
         const { pizzeria_name } = this.state;
         return (
-            <form onSubmit = { this.handleSubmit }>
+            <form onSubmit={this.handleSubmit}>
                 <div>
                     <input 
-                        type = "text"
-                        name = "pizzzeria_name"
-                        value = { pizzeria_name }
-                        onChange = { this.handleChange }
+                        type="text"
+                        name="pizzeria_name"
+                        value={pizzeria_name}
+                        onChange={this.handleChange}
                     />
                 </div>
-                <input type = "submit" value = "Submit" />
+                <input type="submit" value="Submit"/>
             </form>
         );
     }
