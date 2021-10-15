@@ -21,6 +21,8 @@ class PizzeriaListSerializer(serializers.ModelSerializer):
 
 
 class PizzeriaDetailSerializer(serializers.ModelSerializer):
+    update = serializers.SerializerMethodField()
+
     class Meta:
         model = Pizzeria
         fields = ['id',
@@ -38,5 +40,5 @@ class PizzeriaDetailSerializer(serializers.ModelSerializer):
                   'update',
                   ]
 
-        def get_update(self, obj):
-            return reverse('pizzeria_update', args=(obj.pk,))
+    def get_update(self, obj):
+        return reverse('pizzeria_update', args=(obj.pk,))
