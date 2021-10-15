@@ -1,6 +1,17 @@
 import React, {Component} from "react";
+import PizzaUpdate from "./pizzaupdate"
 
 class PizzaDetail extends Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            showComponent: false,
+        };
+        this.updatePizzeriaDetails = this.updatePizzeriaDetails.bind(this);
+    }
+    updatePizzeriaDetails() {
+        this.setState({showComponent:true});
+    }
     render(){
     const obj = this.props.pizzariaDetail;
         return(
@@ -11,6 +22,13 @@ class PizzaDetail extends Component{
                 </h5>
                 <h6>Phone: {obj.phone_number}</h6>
                 <p>{obj.description}</p>
+                <button 
+                style={{backgroundColor:"white"}}
+                onClick={()=>this.updatePizzeriaDetails()}
+                >
+                    Update
+                </button>
+                {this.state.showComponent ? <PizzaUpdate pizzariaUpdate={obj} />: null}
             </div>
         );
     }
