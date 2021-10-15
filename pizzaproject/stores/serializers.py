@@ -36,3 +36,6 @@ class PizzeriaDetailSerializer(serializers.ModelSerializer):
                   'email',
                   'active',
                   ]
+
+        def get_update(self, obj):
+            return reverse('pizzeria_update', args=(obj.pk,))
