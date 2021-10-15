@@ -35,6 +35,7 @@ class PizzeriaDetailSerializer(serializers.ModelSerializer):
                   'logo_image',
                   'email',
                   'active',
+                  'update',
                   ]
 
         def get_update(self, obj):
