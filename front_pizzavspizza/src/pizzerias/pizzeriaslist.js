@@ -32,7 +32,7 @@ class PizzaList extends Component{
 
     componentDidMount(){
         axios
-        .get("http://127.0.0.1:8000/")
+        .get("http://127.0.0.1:8000")
         .then((response) => {
             this.setState({pizzeriaDetail: response.data});
         })
