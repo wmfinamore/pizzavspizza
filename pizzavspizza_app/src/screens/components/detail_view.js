@@ -5,7 +5,7 @@ class DetailView extends Component{
     render(){
         return (
             <View style={styles.center}>
-                <Text style={styles.title}>List View</Text>
+                <Text style={styles.title}>Detail View</Text>
             </View>
         );
     }
