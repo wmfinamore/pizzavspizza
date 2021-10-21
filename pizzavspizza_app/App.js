@@ -12,7 +12,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
-renderScreenComponents=()=>(
+renderScreenComponents = () => (
   <Stack.Navigator>
     <Stack.Screen name="Home" component={ListView} />
     <Stack.Screen name="Detail" component={DetailView} />
