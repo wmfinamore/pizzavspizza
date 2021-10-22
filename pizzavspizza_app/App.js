@@ -8,14 +8,27 @@ import ScreenA from "./src/screens/drawer/screenA";
 import ScreenB from "./src/screens/drawer/screenB";
 import ScreenC from "./src/screens/drawer/screenC";
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import TabOne from "./src/screens/tabs/tab1.js";
+import TabTwo from "./src/screens/tabs/tab2.js";
 
+
+const Tab=createBottomTabNavigator();
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
+
+rederTabComponents=()=>(
+  <Tab.Navigator>
+    <Tab.Screen name="Tab 1" component={TabOne} />
+    <Tab.Screen name="Tab 2" component={TabTwo} />
+  </Tab.Navigator>
+)
 
 renderScreenComponents = () => (
   <Stack.Navigator>
     <Stack.Screen name="Home" component={ListView} />
     <Stack.Screen name="Detail" component={DetailView} />
+    <Stack.Screen name="Tabs" children={this.rederTabComponents} />
   </Stack.Navigator>
 );
 
