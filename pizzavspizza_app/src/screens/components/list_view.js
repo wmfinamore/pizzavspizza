@@ -9,11 +9,17 @@ class ListView extends Component {
       data: [],
     };
   }
-  componentDidMount() {
-    client.get("/").then((response) => {
-      this.setState({data: response.data});
-    });
+  async componentDidMount() {
+    try {
+        const response = await client.get("/");
+        if(!response.ok){
+          this.setState({data: response.data});
+        }
+      }catch(error){
+        console.log(error);
+    }
   }
+  
 
   render() {
     const {data} = this.state;;
@@ -29,6 +35,7 @@ class ListView extends Component {
         <Text>results</Text>
         <Text style={styles.baseText}>Pizza vs. Pizza App</Text>
         <Text style={styles.newText}>{mytext}</Text>
+        <Text>{data.length} Pizzerias</Text>
         <FlatList
           data={data}
           keyExtractor={(item) => item.id.toString()}
