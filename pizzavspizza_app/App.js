@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import ListView from "./src/screens/components/list_view";
+//import ListView from "./src/screens/components/list_view";
+import ListView from "./src/screens/components/function_list_view";
 import DetailView from "./src/screens/components/detail_view";
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
