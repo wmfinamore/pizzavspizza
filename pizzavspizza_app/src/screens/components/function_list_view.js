@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from "react";
-import { StyleSheet, SafeAreaView, Text, Image, FlatList } from "react-native";
+import { StyleSheet, SafeAreaView, Text, Image, FlatList, TouchableOpacity } from "react-native";
 import client from "../../api/client";
 
-const ListView=()=>{
+const ListView=({navigation})=>{
     const[data, setData]=useState([]);
 
     const getList=async ()=>{
@@ -30,9 +30,15 @@ const ListView=()=>{
           keyExtractor={(item) => item.id.toString()}
           renderItem={({item}) => {
               return (
-                  <Text style={styles.itemText}>
-                      {item.pizzeria_name}, {item.city}
-                  </Text>
+                  <TouchableOpacity
+                    onPress={()=>{
+                      navigation.navigate("Detail",{objurl:item.absolute_url,hey:"Best Pizza"});
+                    }}
+                    >
+                      <Text style={styles.itemText}>
+                          {item.pizzeria_name}, {item.city}
+                      </Text>
+                    </TouchableOpacity>
               );
           }}
         />
