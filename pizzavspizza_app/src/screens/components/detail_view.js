@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, View, Text, Button } from "react-native";
+import { StyleSheet, View, Text, Image } from "react-native";
 import client from "./../../api/client";
 
 const DetailView = ({ navigation, route }) => {
@@ -23,6 +23,12 @@ useEffect(()=>{getDetail(objurl);},[]);
 
     return (
         <View style={styles.center}>
+            <Image
+                style={styles.pizzaImage}
+                source={{
+                    uri:detail.logo_image,
+                }}
+            />
             <Text style={styles.title}>Pizzeria: {detail.pizzeria_name}</Text>
             <Text style={styles.title}>Address: {detail.street}</Text>
             <Text style={styles.title}>City: {detail.city}, {detail.state}, {detail.zip_code}</Text>
@@ -42,6 +48,11 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 36,
+        marginBottom: 16,
+    },
+    pizzaImage: {
+        width: 200,
+        height: 200,
         marginBottom: 16,
     }
 })
