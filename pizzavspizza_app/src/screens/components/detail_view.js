@@ -1,13 +1,35 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import { StyleSheet, View, Text, Button } from "react-native";
+import client from "./../../api/client";
 
 const DetailView = ({ navigation, route }) => {
+    const [detail, setDetail]=useState("");
     const { objurl } = route.params;
-    const { hey } = route.params;
+
+
+    const getDetail = async(url) =>{
+    try{
+        const response = await client.get(url);
+        if(!response.ok){
+            setDetail(response.data);
+        }
+    }catch(error){
+        console.log(error);
+    }
+    
+};
+
+useEffect(()=>{getDetail(objurl);},[]);
+
     return (
         <View style={styles.center}>
-            <Text style={styles.title}>{hey}</Text>
-            <Text style={styles.title}>{objurl}</Text>
+            <Text style={styles.title}>Pizzeria: {detail.pizzeria_name}</Text>
+            <Text style={styles.title}>Address: {detail.street}</Text>
+            <Text style={styles.title}>City: {detail.city}, {detail.state}, {detail.zip_code}</Text>
+            <Text style={styles.title}>Web: {detail.pwebsite}</Text>
+            <Text style={styles.title}>Ph: {detail.phone_number}</Text>
+            <Text style={styles.title}>Description: {detail.description}</Text>
+            <Text style={styles.title}>Email: {detail.email}</Text>
         </View>
     )
 }
