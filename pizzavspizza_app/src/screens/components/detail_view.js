@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, View, Text, Image } from "react-native";
+import { StyleSheet, View, Text, Image, FlatList } from "react-native";
 import client from "./../../api/client";
 
 const DetailView = ({ navigation, route }) => {
@@ -23,10 +23,18 @@ useEffect(()=>{getDetail(objurl);},[]);
 
     return (
         <View style={styles.center}>
-            <Image
-                style={styles.pizzaImage}
-                source={{
-                    uri:detail.logo_image,
+            <FlatList
+                data={detail.pizzeria_images}
+                keyExtractor={(item)=>item.id.toString()}
+                renderItem={({item})=>{
+                    return(
+                        <Image
+                            style={styles.pizzaImage}
+                            source={{
+                                uri: item.image,
+                            }}
+                        />
+                    );
                 }}
             />
             <Text style={styles.title}>Pizzeria: {detail.pizzeria_name}</Text>
@@ -37,8 +45,8 @@ useEffect(()=>{getDetail(objurl);},[]);
             <Text style={styles.title}>Description: {detail.description}</Text>
             <Text style={styles.title}>Email: {detail.email}</Text>
         </View>
-    )
-}
+    );
+};
 
 const styles = StyleSheet.create({
     center: {
