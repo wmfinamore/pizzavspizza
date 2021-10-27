@@ -27,7 +27,7 @@ const rederTabComponents=()=>(
 
 const renderScreenComponents = () => (
   <Stack.Navigator>
-    <Stack.Screen name="Home" component={ListView} />
+    <Stack.Screen name="Home List" component={ListView} />
     <Stack.Screen name="Detail" component={DetailView} />
     <Stack.Screen name="Tabs" children={rederTabComponents} />
   </Stack.Navigator>
@@ -37,7 +37,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Drawer.Navigator>
-        <Drawer.Screen name="Home" children={renderScreenComponents}></Drawer.Screen>
+        <Drawer.Screen name="Home Screen" children={renderScreenComponents}></Drawer.Screen>
         <Drawer.Screen name="Screen A" component={ScreenA}></Drawer.Screen>
         <Drawer.Screen name="Screen B" component={ScreenB}></Drawer.Screen>
         <Drawer.Screen name="Screen C" component={ScreenC}></Drawer.Screen>
