@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, View, Text, Image, FlatList } from "react-native";
 import client from "./../../api/client";
+import styles from "./detail_styles";
 
 const DetailView = ({ navigation, route }) => {
     const [detail, setDetail]=useState("");
@@ -48,22 +49,5 @@ useEffect(()=>{getDetail(objurl);},[]);
         </View>
     );
 };
-
-const styles = StyleSheet.create({
-    center: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-    },
-    title: {
-        fontSize: 36,
-        marginBottom: 16,
-    },
-    pizzaImage: {
-        width: 200,
-        height: 200,
-        marginBottom: 16,
-    }
-})
 
 export default DetailView;
