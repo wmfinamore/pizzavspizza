@@ -24,6 +24,7 @@ useEffect(()=>{getDetail(objurl);},[]);
     return (
         <View style={styles.center}>
             <FlatList
+                horizontal={true}
                 data={detail.pizzeria_images}
                 keyExtractor={(item)=>item.id.toString()}
                 renderItem={({item})=>{
