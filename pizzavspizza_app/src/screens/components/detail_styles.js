@@ -7,13 +7,26 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     title: {
-        fontSize: 36,
-        marginBottom: 16,
+        fontFamily: "Cochin",
+        margin: 10,
+        fontSize: 40,
+        marginBottom: 5,
+        color: "red",
+        textAlign: "center",
+        fontWeight: "bold",
+    },
+    details: {
+        margin: 10,
+        marginBottom: 5,
+        color: "black",
+        fontSize: 15,
+        textAlign: "center",
+        fontWeight: "bold",
     },
     pizzaImage: {
-        width: 200,
-        height: 200,
-        marginBottom: 16,
+        borderRadius: 20,
+        width: 400,
+        height: 400,
     }
 })
 

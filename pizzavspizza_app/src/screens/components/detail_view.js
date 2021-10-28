@@ -40,12 +40,12 @@ useEffect(()=>{getDetail(objurl);},[]);
                 }}
             />
             <Text style={styles.title}>Pizzeria: {detail.pizzeria_name}</Text>
-            <Text style={styles.title}>Address: {detail.street}</Text>
-            <Text style={styles.title}>City: {detail.city}, {detail.state}, {detail.zip_code}</Text>
-            <Text style={styles.title}>Web: {detail.pwebsite}</Text>
-            <Text style={styles.title}>Ph: {detail.phone_number}</Text>
-            <Text style={styles.title}>Description: {detail.description}</Text>
-            <Text style={styles.title}>Email: {detail.email}</Text>
+            <Text style={styles.details}>Address: {detail.street}</Text>
+            <Text style={styles.details}>City: {detail.city}, {detail.state}, {detail.zip_code}</Text>
+            <Text style={styles.details}>Web: {detail.pwebsite}</Text>
+            <Text style={styles.details}>Ph: {detail.phone_number}</Text>
+            <Text style={styles.details}>Description: {detail.description}</Text>
+            <Text style={styles.details}>Email: {detail.email}</Text>
         </View>
     );
 };
