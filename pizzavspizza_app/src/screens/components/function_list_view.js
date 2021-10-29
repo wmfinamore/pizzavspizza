@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from "react";
-import { StyleSheet, SafeAreaView, Text, Image, FlatList, TouchableOpacity } from "react-native";
+import { StyleSheet, SafeAreaView, View, FlatList, TouchableOpacity } from "react-native";
 import client from "../../api/client";
+import Card from "./shared/card";
 
-const ListView=({navigation})=>{
+const ListView=({ navigation })=>{
     const[data, setData]=useState([]);
 
     const getList=async ()=>{
@@ -13,67 +14,43 @@ const ListView=({navigation})=>{
     useEffect(()=>{
         getList();
     }, []);
+
     const mytext = "by ProgramWithUs";
     return(
-        <SafeAreaView style={styles.center} >
-        <Image
-          style={styles.pizzaImage}
-          source={{
-            url: "http://bit.ly/book-pizza",
-          }}
-        />
-        <Text style={styles.baseText}>Pizza vs. Pizza App</Text>
-        <Text style={styles.newText}>{mytext}</Text>
-        <Text>{data.length} Pizzerias</Text>
-        <FlatList
-          data={data}
-          keyExtractor={(item) => item.id.toString()}
-          renderItem={({item}) => {
-              return (
+        <SafeAreaView>
+          <View style={styles.container}>
+            <FlatList
+              data={data}
+              keyExtractor={(item)=>item.id.toString()}
+              renderItem={({item})=>{
+                return (
                   <TouchableOpacity
                     onPress={()=>{
-                      navigation.navigate("Detail",{objurl:item.absolute_url,hey:"Best Pizza"});
+                      navigation.navigate("Detail",{
+                        objurl: item.absolute_url,
+                      });
                     }}
                     >
-                      <Text style={styles.itemText}>
-                          {item.pizzeria_name}, {item.city}
-                      </Text>
-                    </TouchableOpacity>
-              );
-          }}
-        />
-        
-      </SafeAreaView>
+                      <Card 
+                        logo={item.logo_image}
+                        title={item.pizzeria_name}
+                        details={item.city}
+                      />
+                  </TouchableOpacity>
+                );
+              }}
+              />
+          </ View>
+        </SafeAreaView>
     );
 };
 
 const styles = StyleSheet.create({
-    center: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-      },
-      title: {
-          fontSize: 36,
-          marginBottom: 16,
-      },
-      baseText:{
-        color:"navy",
-        fontSize:30,
-        fontStyle:"italic",
-      },
-      newText:{
-        color:"red",
-      },
-      pizzaImage: {
-        width: 200,
-        height: 200,
-      },
-      itemText:{
-        color:"green",
-        fontSize:20,
-      }
-})
+  container: {
+    backgroundColor: "#eeeeee",
+    padding: 20,
+  },
+});
 
 export default ListView;
 
