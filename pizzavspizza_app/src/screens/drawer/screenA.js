@@ -1,26 +1,28 @@
-import React, {Component} from "react";
-import { StyleSheet, View, Text, Button } from "react-native";
+import React, { Component } from "react";
+import { StyleSheet, Image, SafeAreaView, TextInput, Text } from "react-native";
 
-class screenA extends Component{
-    render(){
-        return (
-            <View style={styles.center}>
-                <Text style={styles.title}>Screen A</Text>
-            </View>
-        );
-    }
-}
+const screenA=()=>{
+    return(
+        <SafeAreaView>
+            <TextInput 
+                style={styles.textBox} 
+                autoCapitalize="words"
+                autoCorrect={false}
+                placeholder="Pizzeria"
+            />
+        </SafeAreaView>
+    );
+};
 
 const styles = StyleSheet.create({
-    center:{
-        flex:1,
-        justifyContent:"center",
-        alignItems:"center",
+    textBox:{
+        marginTop: 200,
+        height: 40,
+        borderColor: "gray",
+        borderWidth: 1,
+        marginRight:20,
+        marginLeft: 20,
     },
-    title:{
-        fontSize:36,
-        marginBottom:16,
-    }
-})
+});
 
 export default screenA;
