@@ -1,28 +1,37 @@
-import React, { useState } from "react";
-import { StyleSheet, Image, SafeAreaView, TextInput, Text } from "react-native";
+import React from "react";
+import { StyleSheet, Image, SafeAreaView, TextInput, Button, Text } from "react-native";
+import {Formik} from "formik";
+import * as Yup from "yup";
 
 
 const screenA=()=>{
-    const[pizzeria, setPizzeria] = useState("");
     return(
         <SafeAreaView>
-            <Text 
-                style={{
-                    marginTop: 100,
-                    fontSize: 48,
-                    color: "red",
-                    textAlign: "center",
+            <Formik 
+                initialValues={{pizzeria:"", city:""}}
+                onSubmit={()=>{
+                    alert(JSON.stringify(values, null, 2));
                 }}
             >
-                {pizzeria}
-            </Text>
-            <TextInput 
-                style={styles.textBox} 
-                autoCapitalize="words"
-                autoCorrect={false}
-                placeholder="Pizzeria"
-                onChangeText={(text)=>setPizzeria(text)}
-            />
+                {({handleChange, handleSubmit, values})=>(
+                    <>
+                        <TextInput
+                            style={styles.textBox}
+                            value={values.pizzeria}
+                            type="text"
+                            placeholder="Enter a new pizza place here"
+                            onChangeText={handleChange("pizzeria")}
+                        />
+                        <TextInput
+                            style={styles.textBox}
+                            value={values.city}
+                            placeholder="City"
+                            onChangeText={handleChange("city")}
+                        />
+                        <Button onPress={handleSubmit} title="Submit" />
+                    </>
+                )}
+            </Formik>
         </SafeAreaView>
     );
 };
