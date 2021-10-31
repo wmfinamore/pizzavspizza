@@ -1,10 +1,14 @@
 import React from "react";
 import { StyleSheet, Image, SafeAreaView, TextInput, Button, Text } from "react-native";
-import {Formik} from "formik";
+import {ErrorMessage, Formik} from "formik";
 import * as Yup from "yup";
 
 
 const screenA=()=>{
+    const validationSchema = Yup.object({
+        pizzeria: Yup.string().max(200, 'Must be less than 200 characters').min(3, 'Must be at least 3 characters').required('Required'),
+        city: Yup.string().max(400, 'Must be less than 400 characters').min(3, 'Must be at least 3 characters'),
+    })
     return(
         <SafeAreaView>
             <Formik 
@@ -12,8 +16,9 @@ const screenA=()=>{
                 onSubmit={()=>{
                     alert(JSON.stringify(values, null, 2));
                 }}
+                validationSchema={validationSchema}
             >
-                {({handleChange, handleSubmit, values})=>(
+                {({handleChange, handleSubmit, values, errors})=>(
                     <>
                         <TextInput
                             style={styles.textBox}
@@ -22,12 +27,14 @@ const screenA=()=>{
                             placeholder="Enter a new pizza place here"
                             onChangeText={handleChange("pizzeria")}
                         />
+                        <Text style={styles.error}>{errors.pizzeria}</Text>
                         <TextInput
                             style={styles.textBox}
                             value={values.city}
                             placeholder="City"
                             onChangeText={handleChange("city")}
                         />
+                        <Text style={styles.error}>{errors.city}</Text>
                         <Button onPress={handleSubmit} title="Submit" />
                     </>
                 )}
@@ -45,6 +52,9 @@ const styles = StyleSheet.create({
         marginRight:20,
         marginLeft: 20,
     },
+    error:{
+        color:'red',
+    }
 });
 
 export default screenA;
