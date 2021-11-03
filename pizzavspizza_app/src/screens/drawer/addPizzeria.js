@@ -4,7 +4,7 @@ import {ErrorMessage, Formik} from "formik";
 import * as Yup from "yup";
 
 
-const screenA=()=>{
+const addPizzeria=()=>{
     const validationSchema = Yup.object({
         pizzeria: Yup.string().max(200, 'Must be less than 200 characters').min(3, 'Must be at least 3 characters').required('Required'),
         city: Yup.string().max(400, 'Must be less than 400 characters').min(3, 'Must be at least 3 characters'),
@@ -57,4 +57,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default screenA;
+export default addPizzeria;

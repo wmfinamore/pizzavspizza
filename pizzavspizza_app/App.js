@@ -5,7 +5,7 @@ import ListView from "./src/screens/components/function_list_view";
 import DetailView from "./src/screens/components/detail_view";
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import ScreenA from "./src/screens/drawer/screenA";
+import ScreenA from "./src/screens/drawer/addPizzeria";
 import ScreenB from "./src/screens/drawer/screenB";
 import ScreenC from "./src/screens/drawer/screenC";
 import { createDrawerNavigator } from '@react-navigation/drawer';
