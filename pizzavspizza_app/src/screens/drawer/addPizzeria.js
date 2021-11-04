@@ -1,14 +1,12 @@
 import React from "react";
-import { StyleSheet, Image, SafeAreaView, TextInput, Button, Text } from "react-native";
+import { SafeAreaView, TextInput, Button, Text } from "react-native";
 import {ErrorMessage, Formik} from "formik";
-import * as Yup from "yup";
+import styles from "./addPizzeria_styles";
+import validationSchema from "./addPizzeria_valid";
 
 
 const addPizzeria=()=>{
-    const validationSchema = Yup.object({
-        pizzeria: Yup.string().max(200, 'Must be less than 200 characters').min(3, 'Must be at least 3 characters').required('Required'),
-        city: Yup.string().max(400, 'Must be less than 400 characters').min(3, 'Must be at least 3 characters'),
-    })
+    
     return(
         <SafeAreaView>
             <Formik 
@@ -43,18 +41,5 @@ const addPizzeria=()=>{
     );
 };
 
-const styles = StyleSheet.create({
-    textBox:{
-        marginTop: 200,
-        height: 40,
-        borderColor: "gray",
-        borderWidth: 1,
-        marginRight:20,
-        marginLeft: 20,
-    },
-    error:{
-        color:'red',
-    }
-});
 
 export default addPizzeria;
