@@ -15,8 +15,8 @@ const validationSchema = Yup.object({
         .max(400, 'Must be less than 400 characters')
         .min(3, 'Must be at least 3 characters'),
     state: Yup.string()
-        .max(2, 'Must be less than 400 characters')
-        .min(3, 'Must be at least 3 characters'),
+        .max(3, 'Must be less than 3 characters')
+        .min(2, 'Must be at least 2 characters'),
     zip_code: Yup.string()
         .max(5, 'Must be exactly 5 numbers')
         .min(5, 'Must be exactly 5 numbers'),
