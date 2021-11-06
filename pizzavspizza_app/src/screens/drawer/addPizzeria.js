@@ -9,9 +9,26 @@ import {ErrorMessage, Formik} from "formik";
 import styles from "./addPizzeria_styles";
 import validationSchema from "./addPizzeria_valid";
 
-
 const addPizzeria=()=>{
-    
+    const handleSubmit = async (value)=>{
+        const data = new FormData();
+        data.append("pizzeria_name", values.pizzeria);
+        data.append("street", values.street);
+        data.append("city", values.city);
+        data.append("state", values.state);
+        data.append("zip_code", values.zip_code);
+        data.append("website", values.website);
+        data.append("phone_number", values.phone_number);
+        data.append("description", values.description);
+        data.append("email", values.email);
+        
+        client
+            .post("/create/", data)
+            .then(function(response){
+                console.log(response);
+            });
+    };
+
     return(
         <Formik
             initialValues={{
