@@ -8,9 +8,10 @@ import {SafeAreaView,
 import {ErrorMessage, Formik} from "formik";
 import styles from "./addPizzeria_styles";
 import validationSchema from "./addPizzeria_valid";
+import client from "./../../api/client";
 
 const addPizzeria=()=>{
-    const handleSubmit = async (value)=>{
+    const handleSubmit = async (values)=>{
         const data = new FormData();
         data.append("pizzeria_name", values.pizzeria);
         data.append("street", values.street);
@@ -21,10 +22,14 @@ const addPizzeria=()=>{
         data.append("phone_number", values.phone_number);
         data.append("description", values.description);
         data.append("email", values.email);
+        data.append("pizzeria_images", values.pizzeria_images);
         
         client
             .post("/create/", data)
             .then(function(response){
+                console.log(response);
+            })
+            .catch(function(response){
                 console.log(response);
             });
     };
@@ -41,10 +46,9 @@ const addPizzeria=()=>{
                 phone_number:"",
                 description:"",
                 email:"",
+                pizzeria_images:"",
             }}
-            onSubmit={(values)=>{
-                alert(JSON.stringify(values, null, 9));
-            }}
+            onSubmit={handleSubmit}
             validationSchema={validationSchema}
             >
                 {({handleChange, handleSubmit, values, errors})=>(
