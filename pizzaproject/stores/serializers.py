@@ -29,7 +29,7 @@ class ImageSerializer(serializers.HyperlinkedModelSerializer):
 class PizzeriaDetailSerializer(serializers.ModelSerializer):
     update = serializers.SerializerMethodField()
     delete = serializers.SerializerMethodField()
-    pizzeria_images = ImageSerializer(many=True)
+    pizzeria_images = ImageSerializer(many=True, required=False)
 
     class Meta:
         model = Pizzeria
