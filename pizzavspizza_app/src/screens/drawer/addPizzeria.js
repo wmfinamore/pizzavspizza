@@ -9,8 +9,11 @@ import {ErrorMessage, Formik} from "formik";
 import styles from "./addPizzeria_styles";
 import validationSchema from "./addPizzeria_valid";
 import client from "./../../api/client";
+import PhotoPicker from "../components/shared/photo.js";
+import { useState } from "react/cjs/react.development";
 
 const addPizzeria=()=>{
+    const [photo, setPhoto] = useState("");
     const handleSubmit = async (values)=>{
         const data = new FormData();
         data.append("pizzeria_name", values.pizzeria);
@@ -54,10 +57,7 @@ const addPizzeria=()=>{
                 {({handleChange, handleSubmit, values, errors})=>(
                     <SafeAreaView style={styles.content}>
                         <ScrollView>
-                            <Image
-                                style={styles.image}
-                                source={{uri:"https://bit.ly/book-pizza"}}
-                            />
+                            <PhotoPicker photo={photo} onPressPhoto={(uri) => setPhoto(uri)} />
                             <TextInput 
                                 style={styles.textBox}
                                 value={values.pizzeria}
