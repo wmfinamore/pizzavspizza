@@ -1,19 +1,31 @@
-import React from "react";
+import React, {useState} from "react";
 import {SafeAreaView,
+        ScrollView,
         TextInput,
         Button,
+        NativeModules,
         Text,
-        ScrollView,
-        Image,} from "react-native";
-import {ErrorMessage, Formik} from "formik";
+        View,
+        Image,
+        Alert,
+    } from "react-native";
+import {Formik} from "formik";
 import styles from "./addPizzeria_styles";
 import validationSchema from "./addPizzeria_valid";
 import client from "./../../api/client";
 import PhotoPicker from "../components/shared/photo.js";
-import { useState } from "react/cjs/react.development";
 
-const addPizzeria=()=>{
+const addPizzeria=({navigaton})=>{
     const [photo, setPhoto] = useState("");
+    const postedAlert=()=>{
+        Alert.alert("Success!", "Thank you!",[
+            {
+                text: "Got to main screen",
+                onPress: () => NativeModules.DevSettings.reload(),
+            },
+        ]);
+    };
+
     const handleSubmit = async (values)=>{
         const data = new FormData();
         data.append("pizzeria_name", values.pizzeria);
@@ -25,16 +37,18 @@ const addPizzeria=()=>{
         data.append("phone_number", values.phone_number);
         data.append("description", values.description);
         data.append("email", values.email);
-        data.append("pizzeria_images", values.pizzeria_images);
+        data.append("logo_image", {
+            uri: photo,
+            name: "filename.jpg",
+            type: "image/jpg",
+        });
         
-        client
-            .post("/create/", data)
-            .then(function(response){
-                console.log(response);
-            })
-            .catch(function(response){
-                console.log(response);
-            });
+        try{
+            const response = await client.post("/create/", data);
+            postedAlert();
+        }catch(error){
+            console.log(error);
+        }
     };
 
     return(
@@ -49,7 +63,6 @@ const addPizzeria=()=>{
                 phone_number:"",
                 description:"",
                 email:"",
-                pizzeria_images:"",
             }}
             onSubmit={handleSubmit}
             validationSchema={validationSchema}
@@ -61,6 +74,7 @@ const addPizzeria=()=>{
                             <TextInput 
                                 style={styles.textBox}
                                 value={values.pizzeria}
+                                type="text"
                                 placeholder="Enter a new pizza place here"
                                 onChangeText={handleChange("pizzeria")}
                             />
@@ -146,7 +160,7 @@ const addPizzeria=()=>{
                     </SafeAreaView>
                 )}
         </Formik>
-    )
+    );
 };
 
 
